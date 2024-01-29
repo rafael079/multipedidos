@@ -9,4 +9,9 @@ class UserRepository
     {
         return User::create($userData);
     }
+
+    public function update(User $user, array $userData): bool
+    {
+        return $user->update($userData);
+    }
 }
