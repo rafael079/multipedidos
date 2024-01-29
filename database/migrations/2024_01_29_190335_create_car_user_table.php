@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('users_cars', function (Blueprint $table) {
+        Schema::create('car_user', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('user_id')->constrained(
@@ -18,13 +18,10 @@ return new class extends Migration {
                 indexName: 'pivot_user_id'
             );
 
-
             $table->foreignId('car_id')->constrained(
                 table: 'cars',
                 indexName: 'pivot_car_id'
             );
-
-            $table->timestamps();
         });
     }
 
