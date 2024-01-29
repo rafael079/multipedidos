@@ -47,7 +47,7 @@ class Handler extends ExceptionHandler
         if ($exception instanceof ModelNotFoundException || $exception instanceof NotFoundHttpException) {
             return response()->json([
                 'success' => false,
-                'message' => $exception->getMessage() ?? 'Not found'
+                'message' => 'Not found'
             ], 404);
         }
 

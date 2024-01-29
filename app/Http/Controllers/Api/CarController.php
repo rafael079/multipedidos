@@ -10,9 +10,24 @@ use Illuminate\Http\Request;
 
 class CarController extends Controller
 {
-    public function store(CarStoreRequest $request, CarRepository $carRepository)
+
+    private CarRepository $carRepository;
+
+    public function __construct(CarRepository $carRepository)
     {
-        $car = $carRepository->create($request->validated());
+        $this->carRepository = $carRepository;
+    }
+
+    public function index()
+    {
+        $cars = $this->carRepository->all();
+
+        return CarResource::collection($cars);
+    }
+
+    public function store(CarStoreRequest $request)
+    {
+        $car = $this->carRepository->create($request->validated());
 
         return (new CarResource($car))->response()->setStatusCode(201);
     }

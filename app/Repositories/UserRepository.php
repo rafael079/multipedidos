@@ -14,4 +14,9 @@ class UserRepository
     {
         return $user->update($userData);
     }
+
+    public function delete(User $user): bool
+    {
+        return $user->delete();
+    }
 }

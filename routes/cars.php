@@ -4,5 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 # Car Endpoints
 Route::name('car.')->prefix('car')->group(function () {
+    Route::get('/', [CarController::class, 'index'])->name('index');
     Route::post('store', [CarController::class, 'store'])->name('store');
 });
