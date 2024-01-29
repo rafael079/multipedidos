@@ -15,4 +15,14 @@ class CarRepository
     {
         return Car::all();
     }
+
+    public function update(Car $car, array $carData): bool
+    {
+        return $car->update($carData);
+    }
+
+    public function delete(Car $car): bool
+    {
+        return $car->delete();
+    }
 }

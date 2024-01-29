@@ -2,12 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
-use Illuminate\Validation\Rules\Password;
 
-class UserUpdateRequest extends FormRequest
+class CarUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +22,7 @@ class UserUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['email:rfc,dns', 'max:191', Rule::unique('users')->ignore(request()->route('user'))],
-            'password' => [Password::defaults()],
+            'name' => ['required', 'string', 'max:191'],
         ];
     }
 }
