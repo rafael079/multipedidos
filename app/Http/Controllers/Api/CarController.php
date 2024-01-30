@@ -12,7 +12,9 @@ use Illuminate\Http\Request;
 
 class CarController extends Controller
 {
-
+    /**
+     * @param CarRepository $carRepository
+     */
     private CarRepository $carRepository;
 
     public function __construct(CarRepository $carRepository)
@@ -20,28 +22,52 @@ class CarController extends Controller
         $this->carRepository = $carRepository;
     }
 
-    public function index()
+    /**
+     * Returns a collection of cars
+     *
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function index(): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
     {
         $cars = $this->carRepository->all();
 
         return CarResource::collection($cars);
     }
 
-    public function store(CarStoreRequest $request)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \App\Http\Requests\CarStoreRequest  $request
+     * @return \\Illuminate\Http\JsonResponse
+     */
+    public function store(CarStoreRequest $request): \Illuminate\Http\JsonResponse
     {
         $car = $this->carRepository->create($request->validated());
 
         return (new CarResource($car))->response()->setStatusCode(201);
     }
 
-    public function update(Car $car, CarUpdateRequest $request)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\CarUpdateRequest $request
+     * @param  \App\Models\Car $car
+     * @return \App\Http\Resources\CarResource
+     */
+    public function update(Car $car, CarUpdateRequest $request): CarResource
     {
         $this->carRepository->update($car, $request->validated());
 
         return new CarResource($car);
     }
 
-    public function delete(Car $car)
+    /**
+     * Deletes the specified resource from storage.
+     *
+     * @param Car $car
+     * @return \Illuminate\Http\Response
+     */
+    public function delete(Car $car): \Illuminate\Http\Response
     {
         $this->carRepository->delete($car);
 

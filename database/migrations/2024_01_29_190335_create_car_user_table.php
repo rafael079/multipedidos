@@ -15,7 +15,7 @@ return new class extends Migration {
 
             $table->foreignId('user_id')->constrained(
                 table: 'users',
-                indexName: 'pivot_user_id'
+                indexName: 'pivot_user_id',
             );
 
             $table->foreignId('car_id')->constrained(
