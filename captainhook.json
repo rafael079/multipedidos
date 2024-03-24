@@ -35,7 +35,7 @@
         "actions": []
     },
     "post-merge": {
-        "enabled": false,
+        "enabled": true,
         "actions": [
             {
                 "action": "php artisan"
@@ -43,7 +43,7 @@
         ]
     },
     "post-checkout": {
-        "enabled": false,
+        "enabled": true,
         "actions": [
             {
                 "action": "php artisan"
