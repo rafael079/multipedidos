@@ -22,7 +22,7 @@
                 "action": "\\CaptainHook\\App\\Hook\\PHP\\Action\\Linting"
             },
             {
-                "action": "y"
+                "action": "php artisan"
             },
             {
                 "action": "phpcs --standard=psr2 src"
@@ -39,11 +39,19 @@
     },
     "post-merge": {
         "enabled": false,
-        "actions": []
+        "actions": [
+            {
+                "action": "php artisan"
+            }
+        ]
     },
     "post-checkout": {
         "enabled": false,
-        "actions": []
+        "actions": [
+            {
+                "action": "php artisan"
+            }
+        ]
     },
     "post-rewrite": {
         "enabled": false,
