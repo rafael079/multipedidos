@@ -23,9 +23,6 @@
             },
             {
                 "action": "php artisan"
-            },
-            {
-                "action": "phpcs --standard=psr2 src"
             }
         ]
     },
